@@ -36,7 +36,8 @@
                 tab.content.tab.set("text", params.tab);
                 this.search.bind(tab.content.tab);
 
-                if (params.tab == location.hash.substring(1)) {
+                var anchor = location.hash.substring(1);
+                if (params.tab == i18n.get(anchor) || params.tab == anchor) {
                     tab.content.activate();
                 }
 
