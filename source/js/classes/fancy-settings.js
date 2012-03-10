@@ -46,6 +46,10 @@
                     "class": "tab-name",
                     "text": params.tab
                 })).inject(tab.content);
+                
+                tab.settings = (new Element("div", {
+                    "class": "tab-settings"
+                })).inject(tab.content);
             } else {
                 tab = this.tabs[params.tab];
             }
@@ -55,20 +59,18 @@
                 tab.groups[params.group] = {};
                 group = tab.groups[params.group];
                 
-                group.content = (new Element("table", {
+                group.content = (new Element("div", {
                     "class": "setting group"
-                })).inject(tab.content);
+                })).inject(tab.settings);
                 
-                row = (new Element("tr")).inject(group.content);
-                
-                (new Element("td", {
+                (new Element("div", {
                     "class": "setting group-name",
                     "text": params.group
-                })).inject(row);
+                })).inject(group.content);
                 
-                content = (new Element("td", {
+                content = (new Element("div", {
                     "class": "setting group-content"
-                })).inject(row);
+                })).inject(group.content);
                 
                 group.setting = new Setting(content);
             } else {

@@ -4,26 +4,43 @@
 // License: LGPL v2.1
 */
 .tab-name {
+    border-bottom: 1px solid #eeeeee;
     margin-left: 3px;
     margin-bottom: -5px;
+    padding-bottom: 5px;
     font-size: 1.5em;
     color: #303942;
+    
+    position: fixed;
+    width: 740px;
+    z-index: 1;
+    background-color: white;
+}
+
+.tab-settings {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    margin-top: 48px;
+    margin-left: 20px;
 }
 
 .setting.group {
-    border-top: 1px solid #eeeeee;
-    margin-top: 10px;
+    margin-top: 5px;
     margin-left: 3px;
-    padding-top: 5px;
-    padding-left: 2px;
+    padding-top: 11px;
+    padding-left: 0px;
 }
 
 .setting.group-name {
-    width: 140px;
-    padding: 0;
-    font-size: 14px;
-    font-weight: bold;
+    font-size: 1.2em;
     vertical-align: top;
+}
+
+.setting.group-content {
+    margin-top: 1px;
+    margin-left: 18px;
 }
 
 .setting.bundle {

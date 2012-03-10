@@ -17,11 +17,11 @@ this.i18n = {
     
     "information": {
         "en": "Information",
-        "de": "Verlauf"
+        "de": "Erweiterungen"
     },
     "login": {
         "en": "Login",
-        "de": "Anmeldung"
+        "de": "Anmelden"
     },
     "username": {
         "en": "Username:",
@@ -48,13 +48,9 @@ this.i18n = {
         dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.\
         Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
         
-        "de": "Das ist eine Beschreibung. Du kannst hier beliebigen Text einfügen.<br>\
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut\
-        labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores\
-        et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem\
-        ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et\
-        dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.\
-        Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+        "de": "Melden Sie sich mit Ihrem Google-Konto in Google Chrome an, um Ihre personalisierten<br>\
+        Browserfunktionen online zu speichern und über Google Chrome auf jedem Computer darauf<br>\
+        zuzugreifen. Sie werden dann auch automatisch in Ihren Lieblingsdiensten von Google angemeldet.<br><br>"
     },
     "logout": {
         "en": "Logout",

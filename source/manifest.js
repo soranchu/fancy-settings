@@ -5,28 +5,30 @@ this.manifest = {
         {
             "tab": i18n.get("information"),
             "group": i18n.get("login"),
+            "name": "myDescription",
+            "type": "description",
+            "text": i18n.get("description")
+        },
+        {
+            "tab": i18n.get("information"),
+            "group": i18n.get("logout"),
             "name": "username",
             "type": "text",
             "label": i18n.get("username"),
             "text": i18n.get("x-characters"),
             "default": "hi"
         },
+        
         {
             "tab": i18n.get("information"),
-            "group": i18n.get("login"),
+            "group": i18n.get("logout"),
             "name": "password",
             "type": "text",
             "label": i18n.get("password"),
             "text": i18n.get("x-characters-pw"),
             "masked": true
         },
-        {
-            "tab": i18n.get("information"),
-            "group": i18n.get("login"),
-            "name": "myDescription",
-            "type": "description",
-            "text": i18n.get("description")
-        },
+        
         {
             "tab": i18n.get("information"),
             "group": i18n.get("logout"),
@@ -110,7 +112,7 @@ this.manifest = {
             ]
         },
         {
-            "tab": "Einstellungen",
+            "tab": "Erweiterungen",
             "group": "Food",
             "name": "myRadioButtons",
             "type": "radioButtons",
