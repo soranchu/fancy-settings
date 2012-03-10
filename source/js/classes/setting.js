@@ -164,7 +164,7 @@
     });
     
     Bundle.Text = new Class({
-        // label, text, masked
+        // label, text, masked, default
         // action -> change & keyup
         "Extends": Bundle,
         
@@ -202,6 +202,13 @@
             if (this.params.masked === true) {
                 this.element.set("type", "password");
                 this.params.searchString += "password" + "•";
+            }
+            
+            if (this.params.default !== undefined) {
+                if (!this.get()) {
+                    console.log("jop");
+                    this.set(this.default);
+                }
             }
             
             this.element.inject(this.container);

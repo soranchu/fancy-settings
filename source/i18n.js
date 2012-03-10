@@ -17,7 +17,7 @@ this.i18n = {
     
     "information": {
         "en": "Information",
-        "de": "Information"
+        "de": "Verlauf"
     },
     "login": {
         "en": "Login",

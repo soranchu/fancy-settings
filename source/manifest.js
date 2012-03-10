@@ -1,7 +1,6 @@
 // SAMPLE
 this.manifest = {
-    "name": "My Extension",
-    "icon": "icon.png",
+    "name": "Chrome",
     "settings": [
         {
             "tab": i18n.get("information"),
@@ -9,7 +8,8 @@ this.manifest = {
             "name": "username",
             "type": "text",
             "label": i18n.get("username"),
-            "text": i18n.get("x-characters")
+            "text": i18n.get("x-characters"),
+            "default": "hi"
         },
         {
             "tab": i18n.get("information"),
@@ -43,7 +43,7 @@ this.manifest = {
             "text": i18n.get("logout")
         },
         {
-            "tab": "Details",
+            "tab": "Erweiterungen",
             "group": "Sound",
             "name": "noti_volume",
             "type": "slider",
@@ -57,7 +57,7 @@ this.manifest = {
             }
         },
         {
-            "tab": "Details",
+            "tab": "Erweiterungen",
             "group": "Sound",
             "name": "sound_volume",
             "type": "slider",
@@ -71,7 +71,7 @@ this.manifest = {
             }
         },
         {
-            "tab": "Details",
+            "tab": "Erweiterungen",
             "group": "Food",
             "name": "myPopupButton",
             "type": "popupButton",
@@ -99,7 +99,7 @@ this.manifest = {
             },
         },
         {
-            "tab": "Details",
+            "tab": "Erweiterungen",
             "group": "Food",
             "name": "myListBox",
             "type": "listBox",
@@ -110,7 +110,7 @@ this.manifest = {
             ]
         },
         {
-            "tab": "Details",
+            "tab": "Einstellungen",
             "group": "Food",
             "name": "myRadioButtons",
             "type": "radioButtons",

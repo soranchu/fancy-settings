@@ -7,12 +7,12 @@
     var FancySettings = this.FancySettings = new Class({
         "tabs": {},
         
-        "initialize": function (name, icon) {
-            // Set title and icon
+        "initialize": function (name) {
+            // Set title
             $("title").set("text", name);
-            $("favicon").set("href", icon);
-            $("icon").set("src", icon);
-            $("settings-label").set("text", (i18n.get("settings") || "Settings"));
+            $("name").set("text", name);
+            
+            
             $("search-label").set("text", (i18n.get("search") || "Search"));
             $("search").set("placeholder", (i18n.get("search") || "Search") + "...");
             
@@ -37,7 +37,7 @@
                 this.search.bind(tab.content.tab);
 
                 var anchor = location.hash.substring(1);
-                if (params.tab == i18n.get(anchor) || params.tab == anchor) {
+                if (params.tab == i18n.get(anchor) || params.tab == anchor) {
                     tab.content.activate();
                 }
 
@@ -129,7 +129,7 @@
         var settings,
             output;
         
-        settings = new FancySettings(manifest.name, manifest.icon);
+        settings = new FancySettings(manifest.name);
         settings.manifest = {};
         
         manifest.settings.each(function (params) {

@@ -8,7 +8,7 @@ window.addEvent("domready", function () {
     
     // Option 2: Do everything manually:
     /*
-    var settings = new FancySettings("My Extension", "icon.png");
+    var settings = new FancySettings("My Extension");
     
     var username = settings.create({
         "tab": i18n.get("information"),
