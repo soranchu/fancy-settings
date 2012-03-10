@@ -1,7 +1,25 @@
 // SAMPLE
 this.manifest = {
-    "name": "Chrome",
+    "name": "My Extension",
+    "icon": "icon.png",
     "settings": [
+        {
+            "tab": i18n.get("information"),
+            "group": i18n.get("login"),
+            "name": "username",
+            "type": "text",
+            "label": i18n.get("username"),
+            "text": i18n.get("x-characters")
+        },
+        {
+            "tab": i18n.get("information"),
+            "group": i18n.get("login"),
+            "name": "password",
+            "type": "text",
+            "label": i18n.get("password"),
+            "text": i18n.get("x-characters-pw"),
+            "masked": true
+        },
         {
             "tab": i18n.get("information"),
             "group": i18n.get("login"),
@@ -9,26 +27,6 @@ this.manifest = {
             "type": "description",
             "text": i18n.get("description")
         },
-        {
-            "tab": i18n.get("information"),
-            "group": i18n.get("logout"),
-            "name": "username",
-            "type": "text",
-            "label": i18n.get("username"),
-            "text": i18n.get("x-characters"),
-            "default": "hi"
-        },
-        
-        {
-            "tab": i18n.get("information"),
-            "group": i18n.get("logout"),
-            "name": "password",
-            "type": "text",
-            "label": i18n.get("password"),
-            "text": i18n.get("x-characters-pw"),
-            "masked": true
-        },
-        
         {
             "tab": i18n.get("information"),
             "group": i18n.get("logout"),
@@ -45,7 +43,7 @@ this.manifest = {
             "text": i18n.get("logout")
         },
         {
-            "tab": "Erweiterungen",
+            "tab": "Details",
             "group": "Sound",
             "name": "noti_volume",
             "type": "slider",
@@ -59,7 +57,7 @@ this.manifest = {
             }
         },
         {
-            "tab": "Erweiterungen",
+            "tab": "Details",
             "group": "Sound",
             "name": "sound_volume",
             "type": "slider",
@@ -73,35 +71,18 @@ this.manifest = {
             }
         },
         {
-            "tab": "Erweiterungen",
+            "tab": "Details",
             "group": "Food",
             "name": "myPopupButton",
             "type": "popupButton",
             "label": "Soup 1 should be:",
-            "options": {
-                "groups": [
-                    "Hot", "Cold",
-                ],
-                "values": [
-                    {
-                        "value": "hot",
-                        "text": "Very hot",
-                        "group": "Hot",
-                    },
-                    {
-                        "value": "Medium",
-                        "group": 1,
-                    },
-                    {
-                        "value": "Cold",
-                        "group": 2,
-                    },
-                    ["Non-existing"]
-                ],
-            },
+            "options": [
+                ["hot", "Hot and yummy"],
+                ["cold"]
+            ]
         },
         {
-            "tab": "Erweiterungen",
+            "tab": "Details",
             "group": "Food",
             "name": "myListBox",
             "type": "listBox",
@@ -112,7 +93,7 @@ this.manifest = {
             ]
         },
         {
-            "tab": "Erweiterungen",
+            "tab": "Details",
             "group": "Food",
             "name": "myRadioButtons",
             "type": "radioButtons",

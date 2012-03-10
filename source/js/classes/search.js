@@ -65,14 +65,14 @@
         "find": function (searchString) {
             // Exit search mode
             if (searchString.trim() === "") {
-                document.body.removeClass("searching");
+                document.html.removeClass("searching");
                 return;
             }
             
             // Or enter search mode
             this.index.each(function (setting) { setting.bundle.dispose(); });
             Object.each(this.groups, function (group) { group.dispose(); });
-            document.body.addClass("searching");
+            document.html.addClass("searching");
             
             // Filter settings
             var result = this.index.filter(function (setting) {
@@ -88,21 +88,24 @@
                 
                 // Create group if it doesn't exist already
                 if (this.groups[setting.params.group] === undefined) {
-                    this.groups[setting.params.group] = (new Element("table", {
+                    this.groups[setting.params.group] = (new Element("div", {
                         "class": "setting group"
                     })).inject(this.searchResultContainer);
                     
                     group = this.groups[setting.params.group];
-                    row = (new Element("tr")).inject(group);
                     
                     (new Element("td", {
                         "class": "setting group-name",
                         "text": setting.params.group
-                    })).inject(row);
+                    })).inject(group);
+                    
+                    group.settings = (new Element("div", {
+                        "class": "setting group-content"
+                    })).inject(group);
                     
                     group.content = (new Element("td", {
                         "class": "setting group-content"
-                    })).inject(row);
+                    })).inject(group.settings);
                 } else {
                     group = this.groups[setting.params.group].inject(this.searchResultContainer);
                 }

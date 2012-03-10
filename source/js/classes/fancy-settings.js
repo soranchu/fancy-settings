@@ -13,11 +13,12 @@
             $("name").set("text", name);
             
             
+            $("search-tab").set("text", (i18n.get("search") || "Search"));
             $("search-label").set("text", (i18n.get("search") || "Search"));
             $("search").set("placeholder", (i18n.get("search") || "Search") + "...");
             
             this.tab = new Tab($("tab-container"), $("content"));
-            this.search = new Search($("search"), $("search-result-container"));
+            this.search = new Search($("search"), $("search-tab-content"));
         },
         
         "create": function (params) {
@@ -143,14 +144,14 @@
         });
         
         if (manifest.alignment !== undefined) {
-            document.body.addClass("measuring");
+            document.html.addClass("measuring");
             manifest.alignment.each(function (group) {
                 group = group.map(function (name) {
                     return settings.manifest[name];
                 });
                 settings.align(group);
             });
-            document.body.removeClass("measuring");
+            document.html.removeClass("measuring");
         }
 
         if (callback !== undefined) {

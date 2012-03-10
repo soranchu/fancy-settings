@@ -1,36 +1,28 @@
 /*
-// Copyright (c) 2011 Frank Kohlhepp
+// Fancy Settings by Frank Kohlhepp
+// Copyright (c) 2011 - 2012 Frank Kohlhepp
 // https://github.com/frankkohlhepp/fancy-settings
 // License: LGPL v2.1
 */
 .tab-name {
+    position: fixed;
+    background-color: #ffffff;
     border-bottom: 1px solid #eeeeee;
-    margin-left: 3px;
-    margin-bottom: -5px;
+    width: 720px;
+    top: 0;
+    padding-top: 15px;
     padding-bottom: 5px;
     font-size: 1.5em;
     color: #303942;
-    
-    position: fixed;
-    width: 740px;
     z-index: 1;
-    background-color: white;
 }
 
 .tab-settings {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    margin-top: 48px;
-    margin-left: 20px;
+    margin-top: 64px;
 }
 
 .setting.group {
-    margin-top: 5px;
-    margin-left: 3px;
-    padding-top: 11px;
-    padding-left: 0px;
+    margin-top: 15px;
 }
 
 .setting.group-name {

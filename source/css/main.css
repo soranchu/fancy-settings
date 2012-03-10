@@ -4,7 +4,7 @@
 // https://github.com/frankkohlhepp/fancy-settings
 // License: LGPL v2.1
 */
-html {
+html, body {
     height: 100%;
 }
 
@@ -12,72 +12,110 @@ body {
     font-family: "Lucida Grande", sans-serif;
     line-height: 1.8;
     color: black;
-    height: 100%;
 }
 
 #sidebar {
     float: left;
-}
-
-#name {
-    margin: 21px 21px 13px 23px;
-    font-size: 1.5em;
-    color: #5c6166;
-}
-
-#tab-container {
+    height: 100%;
     overflow-y: auto;
     overflow-x: hidden;
 }
 
+#name {
+    margin: 21px 27px 12px 23px;
+    font-size: 1.5em;
+    color: #5c6166;
+    -webkit-transition: margin-bottom 0.1s ease;
+    -moz-transition: margin-bottom 0.1s ease;
+    -o-transition: margin-bottom 0.1s ease;
+    -ms-transition: margin-bottom 0.1s ease;
+    transition: margin-bottom 0.1s ease;
+}
+
+html.searching #name {
+    margin-bottom: 18px;
+}
+
+#tab-container {
+    margin-bottom: 20px;
+}
+
 #tab-container .tab {
     margin: 5px 0;
-    padding: 0 24px;
+    padding: 0 27px 0 24px;
     line-height: 17px;
     color: #999999;
     cursor: pointer;
 }
 
-#tab-container .tab.active {
+#tab-container .tab:hover,
+html.searching #tab-container .tab.active:hover {
+    color: #777777;
+}
+
+html.searching #search-tab,
+html.searching #search-tab:hover {
+    color: #464e5a;
+}
+
+#tab-container .tab.active, html.searching #search-tab {
     border-left: 6px solid #464e5A;
     padding-left: 18px;
     color: #464e5a;
 }
 
+html.searching #tab-container .tab.active {
+    border-left: none;
+    padding-left: 24px;
+    color: #999999;
+}
+
 #content {
-    overflow: auto;
+    position: relative;
+    width: 740px;
     height: 100%;
+    padding: 20px;
+    padding-top: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .tab-content {
     display: none;
-    padding: 20px;
-    padding-top: 15px;
-    position: relative;
 }
 
-
-
-
-
-body.searching #tab-container .tab.active {
-    background-color: transparent;
-    border-color: transparent;
-    color: #808080;
-    text-shadow: inherit;
-    box-shadow: none;
-}
-
-body.searching .tab-content {
+html.searching .tab-content {
     display: none !important;
 }
 
-body.searching #search-result-container {
+#search-tab {
+    height: 1px;
+    overflow: hidden;
+    -webkit-transition: height 0.1s ease;
+    -moz-transition: height 0.1s ease;
+    -o-transition: height 0.1s ease;
+    -ms-transition: height 0.1s ease;
+    transition: height 0.1s ease;
+}
+
+html.searching #search-tab {
+    height: 17px;
+}
+
+#search {
+    position: fixed;
+    width: 250px;
+    top: 19px;
+    left: 618px;
+    z-index: 2;
+}
+
+html.searching #search-tab-content {
     display: block !important;
 }
 
-body.measuring .tab-content, body.measuring #search-result-container {
+html.measuring .tab-content, html.measuring #search-tab-content {
     display: block !important;
-    opacity: 0;
     overflow: hidden;
+    opacity: 0;
 }
