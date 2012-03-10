@@ -43,6 +43,7 @@
 
                 tab.content = tab.content.content;
                 (new Element("h2", {
+                    "class": "tab-name",
                     "text": params.tab
                 })).inject(tab.content);
             } else {
