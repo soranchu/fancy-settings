@@ -3,6 +3,9 @@
 // https://github.com/frankkohlhepp/fancy-settings
 // License: LGPL v2.1
 //
+//
+// Added User Type Extension. @soranchu
+//
 (function () {
     var settings,
         Bundle;
@@ -612,16 +615,13 @@
     });
     
     this.Setting = new Class({
-        "initialize": function (container) {
+        "initialize": function (container, extraTypeSet) {
+        	var key, extraBundle;
+        	
             this.container = container;
-        },
-        
-        "create": function (params) {
-            var types,
-                bundle;
             
             // Available types
-            types = {
+            this.types = {
                 "description": "Description",
                 "button": "Button",
                 "text": "Text",
@@ -631,15 +631,31 @@
                 "listBox": "ListBox",
                 "radioButtons": "RadioButtons"
             };
+            if( extraTypeSet ){
+            	for( key in extraTypeSet ){
+            		if( extraTypeSet.hasOwnProperty(key) ){
+            			extraBundle = extraTypeSet[key];
+            			this.types[key] = key;
+            			Bundle[key] = extraBundle;
+            		}
+            	}
+            }
             
-            if (types.hasOwnProperty(params.type)) {
-                bundle = new Bundle[types[params.type]](params);
+        },
+        
+        "create": function (params) {
+            var bundle;
+            
+            if (this.types.hasOwnProperty(params.type)) {
+                bundle = new Bundle[this.types[params.type]](params);
                 bundle.bundleContainer = this.container;
                 bundle.bundle.inject(this.container);
                 return bundle;
             } else {
-                throw "invalidType";
+                throw "invalidType : " + params.type;
             }
         }
     });
+    
+    this.Setting.Bundle = Bundle;
 }());

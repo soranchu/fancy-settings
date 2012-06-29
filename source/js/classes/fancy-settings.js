@@ -7,7 +7,7 @@
     var FancySettings = this.FancySettings = new Class({
         "tabs": {},
         
-        "initialize": function (name, icon) {
+        "initialize": function (name, icon, extraTypeSet) {
             // Set title and icon
             $("title").set("text", name);
             $("favicon").set("href", icon);
@@ -17,7 +17,8 @@
             $("search").set("placeholder", (i18n.get("search") || "Search") + "...");
             
             this.tab = new Tab($("tab-container"), $("content"));
-            this.search = new Search($("search"), $("search-result-container"));
+            this.search = new Search($("search"), $("search-result-container"), extraTypeSet);
+            this.extraTypeSet = extraTypeSet;
         },
         
         "create": function (params) {
@@ -37,7 +38,7 @@
                 this.search.bind(tab.content.tab);
 
                 var anchor = location.hash.substring(1);
-                if (params.tab == i18n.get(anchor) || params.tab == anchor) {
+                if (params.tab == i18n.get(anchor) || params.tab == anchor) {
                     tab.content.activate();
                 }
 
@@ -69,7 +70,7 @@
                     "class": "setting group-content"
                 })).inject(row);
                 
-                group.setting = new Setting(content);
+                group.setting = new Setting(content, this.extraTypeSet);
             } else {
                 group = tab.groups[params.group];
             }
@@ -125,11 +126,11 @@
         }
     });
     
-    FancySettings.__proto__.initWithManifest = function (callback) {
+    FancySettings.__proto__.initWithManifest = function (callback, extraTypeSet) {
         var settings,
             output;
         
-        settings = new FancySettings(manifest.name, manifest.icon);
+        settings = new FancySettings(manifest.name, manifest.icon, extraTypeSet);
         settings.manifest = {};
         
         manifest.settings.each(function (params) {

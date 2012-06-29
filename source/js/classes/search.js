@@ -8,13 +8,13 @@
         "index": [],
         "groups": {},
         
-        "initialize": function (search, searchResultContainer) {
+        "initialize": function (search, searchResultContainer, extraTypeSet) {
             var setting,
                 find;
             
             this.search = search;
             this.searchResultContainer = searchResultContainer;
-            this.setting = new Setting(new Element("div"));
+            this.setting = new Setting(new Element("div"), extraTypeSet);
             
             // Create setting for message "nothing found"
             setting = new Setting(this.searchResultContainer);
