@@ -7,10 +7,9 @@
 // Added User Type Extension. @soranchu
 //
 (function () {
-    var settings,
-        Bundle;
+    var Bundle;
     
-    settings = new Store("settings");
+    //settings = new Store("settings");
     Bundle = new Class({
         // Attributes:
         // - tab
@@ -27,9 +26,10 @@
         //  - set
         "Implements": Events,
         
-        "initialize": function (params) {
+        "initialize": function (params,settings) {
             this.params = params;
             this.params.searchString = "•" + this.params.tab + "•" + this.params.group + "•";
+            this.settings = settings;
             
             this.createDOM();
             this.setupDOM();
@@ -37,6 +37,10 @@
             
             if (this.params.name !== undefined) {
                 this.set(settings.get(this.params.name), true);
+                
+                settings.addListener(this.params.name,(function(newvalue){
+                	this.set(newvalue);
+                }.bind(this)));
             }
             
             this.params.searchString = this.params.searchString.toLowerCase();
@@ -45,7 +49,7 @@
         "addEvents": function () {
             this.element.addEvent("change", (function (event) {
                 if (this.params.name !== undefined) {
-                    settings.set(this.params.name, this.get());
+                    this.settings.set(this.params.name, this.get());
                 }
                 
                 this.fireEvent("action", this.get());
@@ -74,9 +78,10 @@
         "get": undefined,
         "set": undefined,
         
-        "initialize": function (params) {
+        "initialize": function (params,settings) {
             this.params = params;
             this.params.searchString = "";
+            this.settings = settings;
             
             this.createDOM();
             this.setupDOM();
@@ -113,10 +118,10 @@
         "get": undefined,
         "set": undefined,
         
-        "initialize": function (params) {
+        "initialize": function (params, settings) {
             this.params = params;
             this.params.searchString = "•" + this.params.tab + "•" + this.params.group + "•";
-            
+            this.settings = settings;
             this.createDOM();
             this.setupDOM();
             this.addEvents();
@@ -214,7 +219,7 @@
         "addEvents": function () {
             var change = (function (event) {
                 if (this.params.name !== undefined) {
-                    settings.set(this.params.name, this.get());
+                    this.settings.set(this.params.name, this.get());
                 }
                 
                 this.fireEvent("action", this.get());
@@ -283,16 +288,21 @@
         // action -> change
         "Extends": Bundle,
         
-        "initialize": function (params) {
+        "initialize": function (params, settings) {
             this.params = params;
             this.params.searchString = "•" + this.params.tab + "•" + this.params.group + "•";
+            this.settings = settings;
             
             this.createDOM();
             this.setupDOM();
             this.addEvents();
             
             if (this.params.name !== undefined) {
-                this.set((settings.get(this.params.name) || 0), true);
+                this.set((settings.get(this.params.name) || 0), true);                
+                settings.addListener(this.params.name,(function(newvalue){
+                	this.set(newvalue||0);
+                }.bind(this)));
+
             } else {
                 this.set(0, true);
             }
@@ -357,7 +367,7 @@
         "addEvents": function () {
             this.element.addEvent("change", (function (event) {
                 if (this.params.name !== undefined) {
-                    settings.set(this.params.name, this.get());
+                    this.settings.set(this.params.name, this.get());
                 }
                 
                 if (this.params.displayModifier !== undefined) {
@@ -586,7 +596,7 @@
         "addEvents": function () {
             this.bundle.addEvent("change", (function (event) {
                 if (this.params.name !== undefined) {
-                    settings.set(this.params.name, this.get());
+                    this.settings.set(this.params.name, this.get());
                 }
                 
                 this.fireEvent("action", this.get());
@@ -615,7 +625,8 @@
     });
     
     this.Setting = new Class({
-        "initialize": function (container, extraTypeSet) {
+        "initialize": function (store, container, extraTypeSet) {
+        	this.settings = store;
         	var key, extraBundle;
         	
             this.container = container;
@@ -647,7 +658,7 @@
             var bundle;
             
             if (this.types.hasOwnProperty(params.type)) {
-                bundle = new Bundle[this.types[params.type]](params);
+                bundle = new Bundle[this.types[params.type]](params, this.settings);
                 bundle.bundleContainer = this.container;
                 bundle.bundle.inject(this.container);
                 return bundle;
