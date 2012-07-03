@@ -3,6 +3,9 @@
 // https://github.com/frankkohlhepp/fancy-settings
 // License: LGPL v2.1
 //
+//  modified @soranchu
+
+
 (function () {
     var FancySettings = this.FancySettings = new Class({
         "tabs": {},
