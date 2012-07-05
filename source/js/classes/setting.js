@@ -38,8 +38,8 @@
             if (this.params.name !== undefined) {
                 this.set(settings.get(this.params.name), true);
                 
-                settings.addListener(this.params.name,(function(newvalue){
-                	this.set(newvalue);
+                settings.addListener(this.params.name,(function(newvalue, isDefault){
+                	this.set(newvalue,!isDefault);
                 }.bind(this)));
             }
             
@@ -299,8 +299,8 @@
             
             if (this.params.name !== undefined) {
                 this.set((settings.get(this.params.name) || 0), true);                
-                settings.addListener(this.params.name,(function(newvalue){
-                	this.set(newvalue||0);
+                settings.addListener(this.params.name,(function(newvalue, isDefault){
+                	this.set(newvalue||0,!isDefault);
                 }.bind(this)));
 
             } else {
